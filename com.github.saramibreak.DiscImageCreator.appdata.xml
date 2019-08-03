@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>com.github.saramibreak.DiscImageCreator</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>Apache-2.0</project_license>
+  <name>DiscImageCreator</name>
+  <summary>Disc image creation tool</summary>
+  <provides>
+    <binary>DiscImageCreator</binary>
+    <binary>EccEdc_linux.out</binary>
+  </provides>
+  <releases>
+		<release version="20190627-git" date="2019-07-30" />
+	</releases>
+  <content_rating type="oars-1.1" />
+  <url type="homepage">https://github.com/saramibreak/DiscImageCreator/</url>
+  <url type="bugtracker">https://github.com/saramibreak/DiscImageCreator/issues/</url>
+  <url type="faq">https://github.com/saramibreak/DiscImageCreator/wiki</url>
+  <update_contact>sakcheen+flathub_AT_gmail.com</update_contact>
+	<developer_name>saramibreak</developer_name>
+</component>

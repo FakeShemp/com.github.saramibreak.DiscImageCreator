@@ -1,0 +1,41 @@
+app-id: com.github.saramibreak.DiscImageCreator
+runtime: org.freedesktop.Platform
+runtime-version: '18.08'
+sdk: org.freedesktop.Sdk
+command: DiscImageCreator
+finish-args:
+  - --filesystem=host
+  - --device=all
+cleanup:
+  - /include
+modules:
+  - name: EccEdc
+    buildsystem: simple
+    subdir: EccEdc
+    build-commands:
+      - make
+      - mkdir "${FLATPAK_DEST}/bin"
+      - mv EccEdc_linux.out "${FLATPAK_DEST}/bin"
+    sources:
+      - type: git
+        url: https://github.com/saramibreak/EccEdc.git
+        commit: 427197bf9feaf8c5f1a1878fdfcda48762fae82a
+
+  - name: DiscImageCreator
+    buildsystem: simple
+    subdir: DiscImageCreator
+    build-commands:
+      - make
+      - mv DiscImageCreator ../Release_ANSI/EdcEccErrorProtect.txt ../Release_ANSI/ReadErrorProtect.txt ../Release_ANSI/default.dat ../Release_ANSI/driveOffset.txt "${FLATPAK_DEST}/bin"
+    modules:
+      - name: appdata
+        buildsystem: simple
+        build-commands:
+          - install -Dm644 com.github.saramibreak.DiscImageCreator.appdata.xml -t "${FLATPAK_DEST}/share/appdata/"
+        sources:
+          - type: file
+            path: com.github.saramibreak.DiscImageCreator.appdata.xml
+    sources:
+      - type: git
+        url: https://github.com/saramibreak/DiscImageCreator.git
+        commit: 881694bd8deaf135762e8b887345d8a373a58d19
